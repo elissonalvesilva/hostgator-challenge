@@ -3,6 +3,8 @@
 namespace App\Controllers;
 
 use App\Models\Products;
+use App\Models\Cycles;
+use Illuminate\Support\Facades\DB;
 use Psr\Http\Message\{
     ServerRequestInterface as Request,
     ResponseInterface as Response
@@ -19,8 +21,8 @@ class ProductsController extends Controller
     public function products(Request $request, Response $response)
     {
 
-        $products     =   Products::all();
-
+        $products =   Products::all();
+        $test = $products->load('cycles');
         $data = array('shared' => $products);
         $payload = json_encode($data);
 
