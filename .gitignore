@@ -1,0 +1,8 @@
+# Hidden file from Macox
+.DS_Store
+
+# node_modules
+node_modules/
+
+# hostgator api
+hostgator-api/vendor
