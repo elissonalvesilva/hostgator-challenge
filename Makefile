@@ -11,6 +11,11 @@ build:
 
 start:
 	docker-compose up
+	up-data
 
 stop:
 	docker-compose down
+
+up-data:
+	cd hostgator-api/ && vendor/bin/phinx migrate
+	cd hostgator-api/ && vendor/bin/phinx seed:run
