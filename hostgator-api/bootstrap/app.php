@@ -38,21 +38,5 @@ $container->set('settings', function () {
     ];
 });
 
-$container->set('view', function ($container) use ($app) {
-    $twig = new Twig(__DIR__ . '/../resources/views', [
-        'cache' => false
-    ]);
-
-    $twig->addExtension(
-        new TwigExtension(
-            $app->getRouteCollector()->getRouteParser(),
-            (new UriFactory)->createFromGlobals($_SERVER),
-            '/'
-        )
-    );
-
-    return $twig;
-});
-
 require_once __DIR__ . '/../bootstrap/database.php';
 require_once __DIR__ . '/../routes/web.php';

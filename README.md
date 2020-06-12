@@ -42,13 +42,12 @@ Must be installed docker and docker-compose
 ## How to use a API
 **The API run at port 3000**
 
-- GET
+### GET
   - Health check
 > http://localhost:3000/health
-
   - Products
-> http://localhost:3000/products
+> http://localhost:3000/api/products
 
   - Product by id
-> http://localhost:3000/products/{id}
+> http://localhost:3000/api/products/{id}
 
