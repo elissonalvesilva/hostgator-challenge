@@ -2,13 +2,13 @@
 
 namespace App\Controllers;
 
-use App\Controllers\Controller;
+use App\Controllers\BaseController;
 use Psr\Http\Message\{
     ServerRequestInterface as Request,
     ResponseInterface as Response
 };
 
-class HealthController extends Controller
+class HealthController extends BaseController
 {
     /**
      * Return status ok if 
@@ -21,12 +21,9 @@ class HealthController extends Controller
      */
     public function health(Request $request, Response $response)
     {
+        $this->setParams($request, $response);
         $data = array('status' => 'ok');
-        $payload = json_encode($data);
 
-        $response->getBody()->write($payload);
-        return $response
-                ->withHeader('Content-Type', 'application/json')
-                ->withStatus(201);
+        return $this->jsonResponse($data, http_response_code());
     }
 }
