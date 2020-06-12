@@ -1,1 +1,4 @@
 vendor/
+
+# Hidden file from Macox
+.DS_Store
