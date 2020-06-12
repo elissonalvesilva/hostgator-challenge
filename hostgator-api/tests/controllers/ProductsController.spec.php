@@ -8,8 +8,14 @@ use App\Models\Products;
 use stdClass;
 use Tests\TestBase;
 
-class ProductsControllerTest extends TestBase {
+class ProductsControllerTest extends TestBase
+{
   
+  /**
+   * Test a return All products from Model
+   * 
+   * Mock a product list
+   */
   public function testAllProducts () {
     $assertion = new stdClass;
     $assertion->code = 200;
@@ -33,6 +39,11 @@ class ProductsControllerTest extends TestBase {
     $this->assertEquals($assertion, $stub->getAll());
   }
 
+  /**
+   * Test a return product by id from Model
+   * 
+   * Mock a product result
+   */
   public function testGetProductById () {
     $assertion = new stdClass;
     $assertion->code = 200;
@@ -56,6 +67,11 @@ class ProductsControllerTest extends TestBase {
     $this->assertEquals($assertion, $stub->getProductById(2));
   }
 
+  /**
+   * Test response if product is not found
+   * 
+   * Mock a product result
+   */
   public function testProductByIdNotFound () {
     $assertion = new stdClass;
     $assertion->code = 404;
@@ -70,6 +86,11 @@ class ProductsControllerTest extends TestBase {
     $this->assertEquals($assertion, $stub->getProductById(5));
   }
 
+  /**
+   * Test response if product id is not equal to integer
+   * 
+   * Mock a product result
+   */
   public function testProductIdDifferentToInteger () {
     $assertion = new stdClass;
     $assertion->statusCode = 404;

@@ -13,6 +13,7 @@ use Slim\Handlers\ErrorHandler;
 use Exception;
 use Throwable;
 
+// Error handler middleware
 class HttpErrorHandler extends ErrorHandler
 {
     public const BAD_REQUEST = 'BAD_REQUEST';
@@ -23,6 +24,9 @@ class HttpErrorHandler extends ErrorHandler
     public const SERVER_ERROR = 'SERVER_ERROR';
     public const UNAUTHENTICATED = 'UNAUTHENTICATED';
     
+    /**
+     * Respond to API Middleware a Erro by status code
+     */
     protected function respond(): ResponseInterface
     {
         $exception = $this->exception;

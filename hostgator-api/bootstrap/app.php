@@ -27,6 +27,7 @@ $app = AppFactory::create();
 $callableResolver = $app->getCallableResolver();
 $responseFactory = $app->getResponseFactory();
 
+//create error handler
 $errorHandler = new HttpErrorHandler($callableResolver, $responseFactory);
 
 // Add Routing Middleware

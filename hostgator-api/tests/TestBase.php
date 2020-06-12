@@ -35,6 +35,15 @@ class TestBase extends PHPUnit_TestCase
         return $response;
     }
 
+    /**
+     * Call API method to request a health check from tests
+     * @param String $method - Method type GET, PUT, POST, DELETE
+     * @param String $path - Path to request
+     * @param Array $headers - Headers params as default 'HTTP_ACCEPT' => 'application/json'
+     * @param $data - With want to call a external API using post 
+     * you must to pass a data to record
+     * @return $data
+     */
     private function callApi(
         string $method,
         string $path,

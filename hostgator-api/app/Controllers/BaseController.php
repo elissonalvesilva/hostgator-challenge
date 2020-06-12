@@ -23,13 +23,23 @@ abstract class BaseController extends Controller
      */
     protected $args;
 
-    protected function setParams(Request $request, Response $response, array $args = [])
+    /**
+     * Set Params
+     * @param Request $request - Requests Params
+     * @param Response $response - Response Params
+     * @param Array $args - Array of Arguments
+     * @return void
+     */
+    protected function setParams(Request $request, Response $response, array $args = []): void
     {
         $this->request = $request;
         $this->response = $response;
         $this->args = $args;
     }
     /**
+     * Return a json response to API and 
+     * make a result response by status code
+     * 
      * @param string $status
      * @param mixed $message
      * @param int $code
@@ -55,15 +65,6 @@ abstract class BaseController extends Controller
         return $this->response
                 ->withHeader('Content-Type', 'application/json')
                 ->withStatus($code);
-    }
-
-
-    /**
-     * @return array
-     */
-    protected function getInput()
-    {
-        return $this->request->getParsedBody();
     }
 
 }

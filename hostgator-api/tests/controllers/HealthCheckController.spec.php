@@ -9,6 +9,9 @@ use Tests\TestBase;
 
 class HealthCheckTest extends TestBase {
 
+  /**
+   * Health check test
+   */
   public function testHealth () {
     $method = "GET";
     $path = "/health";

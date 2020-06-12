@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * Configure Eloquent ORM
+ */
 use Illuminate\Database\Capsule\Manager as Capsule;
 
 $config  = $container->get('settings')['database'];
