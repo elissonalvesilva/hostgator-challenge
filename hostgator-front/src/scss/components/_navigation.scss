@@ -1,0 +1,14 @@
+.nav {
+  background-color: $background-navigation;
+  width: 100%;
+  display: block;
+  .nav__content {
+    height: $navigation-height;
+
+    .nav__logo {
+      left: 24.4375em;
+      position: relative;
+      top: 8px;
+    }
+  }
+}

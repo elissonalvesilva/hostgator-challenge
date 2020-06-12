@@ -1,5 +1,15 @@
+@import "variables";
+@import "normalizer";
+
 * {
+  font-family: 'Montserrat', sans-serif;
+}
+
+body {
+  background-color: $background;
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat';
 }
+
+@import 'components/navigation';
+@import 'components/header';
