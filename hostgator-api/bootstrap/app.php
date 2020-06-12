@@ -5,12 +5,12 @@ use Dotenv\Dotenv;
 use Slim\Factory\AppFactory;
 use Dotenv\Exception\InvalidPathException;
 use Psr\Http\Message\ServerRequestInterface;
-use Psr\Log\LoggerInterface;
-use Slim\Psr7\Response;
-use Slim\Psr7\Request;
 
+use App\Handlers\HttpErrorHandler;
 
 require_once __DIR__ . '/../vendor/autoload.php';
+
+$displayErrorDetails = false;
 
 // load .env
 try {
@@ -24,6 +24,10 @@ $container = new Container();
 AppFactory::setContainer($container);
 
 $app = AppFactory::create();
+$callableResolver = $app->getCallableResolver();
+$responseFactory = $app->getResponseFactory();
+
+$errorHandler = new HttpErrorHandler($callableResolver, $responseFactory);
 
 // Add Routing Middleware
 $app->addRoutingMiddleware();
@@ -47,28 +51,11 @@ $container->set('settings', function () {
     ];
 });
 
-
-$customErrorHandler = function (
-    ServerRequestInterface $request,
-    \Throwable $exception,
-    bool $displayErrorDetails,
-    bool $logErrors,
-    bool $logErrorDetails
-) use ($app) {
-    $response = $app->getResponseFactory()->createResponse();
-    $payload = json_encode(['error' => 'Not found Route']);
-    $response->getBody()->write($payload);
-    return $response
-            ->withHeader('Content-Type', 'application/json')
-            ->withStatus(400);
-};
-
-// Add Error Middleware
-$errorMiddleware = $app->addErrorMiddleware(true, true, true);
-// Register the handler to handle only  HttpNotFoundException
-// Changing the first parameter registers the error handler for other types of exceptions
-$errorMiddleware->setErrorHandler(Slim\Exception\HttpNotFoundException::class, $customErrorHandler);
-
+// Add Error Handling Middleware
+$errorMiddleware = $app->addErrorMiddleware($displayErrorDetails, false, false);
+$errorMiddleware->setDefaultErrorHandler($errorHandler);
 
 require_once __DIR__ . '/../bootstrap/database.php';
 require_once __DIR__ . '/../routes/web.php';
+
+return $app;

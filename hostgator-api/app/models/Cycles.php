@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Cycles extends Model
 {
     protected $table = 'cycles';
+    protected $hidden = ["created_at", "updated_at", "product_id", "id"];
 
     /**
      * @var array

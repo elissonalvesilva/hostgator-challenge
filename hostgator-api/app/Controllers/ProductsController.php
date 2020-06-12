@@ -21,9 +21,8 @@ class ProductsController extends BaseController
      */
     public function index(Request $request, Response $response)
     {
-
-        $products = Products::all();
-        $products->load('cycles');
+        $product = new Products();
+        $products = $product->getAll();
         $data = array('shared' => $products);
         $payload = json_encode($data);
 
@@ -45,14 +44,14 @@ class ProductsController extends BaseController
     {
         $this->setParams($request, $response, $args);
         
-        try {
-            $product_id = $this->args['id'];
-            $product = Products::findOrFail($product_id);
-            $product->load('cycles');
-            return $this->jsonResponse($product, http_response_code());
-        } catch (ModelNotFoundException $e) {
-            return $this->jsonResponse($e->getMessage(), http_response_code());
+        $product_id = $this->args['pid'];
+        $product = new Products();
+        $product = $product->getProductById($product_id);
+
+        if ($product->error) {
+            return $this->jsonResponse($product->message, $product->code);
         }
-        
+
+        return $this->jsonResponse($product->data, http_response_code());
     }
 }
