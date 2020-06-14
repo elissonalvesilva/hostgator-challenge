@@ -5,9 +5,14 @@
    - PHP as Slim Framework 4
    - Eloquent ORM
    - Phinx
+   - Nginx
  - Frontend
    - React.js
    - Material UI
+   - Webpack 4
+   - Redux
+   - Media queries (320px and 1024px)
+   - Sass Pre-Processor
 
 ## Setup
 Must be installed docker and docker-compose
