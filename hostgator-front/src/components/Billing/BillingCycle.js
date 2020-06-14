@@ -7,7 +7,7 @@ import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 
 function BillingCycle() {
-  const [value, setValue] = React.useState('yearly');
+  const [value, setValue] = React.useState('triennially');
 
   const handleChange = (event) => {
     setValue(event.target.value);
@@ -33,12 +33,12 @@ function BillingCycle() {
             }
           />
           <FormControlLabel
-            value="yearly"
+            value="annually"
             control={<Radio />}
             label="1 ano"
             color="default"
             className={
-              value === 'yearly' ? 'cycle__choose--active' : ''
+              value === 'annually' ? 'cycle__choose--active' : ''
             }
           />
           <FormControlLabel

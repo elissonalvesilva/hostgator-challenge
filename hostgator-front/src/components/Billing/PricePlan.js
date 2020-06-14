@@ -1,17 +1,34 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
+import calc from '../../helpers/baseCalc';
+
 import infoIcon from '../../../images/info.svg';
 
-function PrincePlan() {
+function PrincePlan({ cycles, type }) {
+  const cycle = cycles.filter((o) => o.type === type)[0];
+  const discount = calc.calcDiscount(cycle.priceOrder);
+  const priceInstallments = calc.calcCycleInstallments(discount, cycle.months);
+  const priceOffer = calc.offer(cycle.priceOrder, discount);
+
   return (
     <div className="billing-plan__section">
       <div className="section-prince">
         <div className="section-price__total">
-          <del> R$ 647,64 </del>
-          <span className="price-total">R$ 453,35</span>
+          <del>
+            R$
+            { cycle.priceOrder }
+          </del>
+          <span className="price-total">
+            R$
+            { discount }
+          </span>
           <span className="price-text">equivalente a</span>
           <div className="price-per-month">
             R$
-            <span className="price-per-month__price"> 12,59</span>
+            <span className="price-per-month__price">
+              {priceInstallments}
+            </span>
             /mês*
           </div>
         </div>
@@ -25,7 +42,9 @@ function PrincePlan() {
           </div>
           <div className="description-discount">
             <span>economize R$</span>
-            <span className="description-discount__price">174,88</span>
+            <span className="description-discount__price">
+              {priceOffer}
+            </span>
             <span className="description-discount__percent">40% OFF</span>
           </div>
         </div>
@@ -33,5 +52,29 @@ function PrincePlan() {
     </div>
   );
 }
+
+PrincePlan.defaultProps = {
+  cycles: PropTypes.arrayOf(
+    PropTypes.shape({
+      type: PropTypes.string.isRequired,
+      priceRenew: PropTypes.string.isRequired,
+      priceOrder: PropTypes.string.isRequired,
+      months: PropTypes.number.isRequired,
+    }),
+  ),
+  type: PropTypes.string,
+};
+
+PrincePlan.propTypes = {
+  cycles: PropTypes.arrayOf(
+    PropTypes.shape({
+      type: PropTypes.string.isRequired,
+      priceRenew: PropTypes.string.isRequired,
+      priceOrder: PropTypes.string.isRequired,
+      months: PropTypes.number.isRequired,
+    }),
+  ),
+  type: PropTypes.string,
+};
 
 export default PrincePlan;
