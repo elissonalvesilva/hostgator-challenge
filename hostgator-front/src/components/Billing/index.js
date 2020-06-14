@@ -2,6 +2,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
+import configs from '../../config/default';
 
 import BillingCycle from './BillingCycle';
 import BillingPlan from './BillingPlan';
@@ -13,7 +14,7 @@ function Billing() {
   useEffect(() => {
     const fetchData = async () => {
       const { data } = await axios(
-        'http://localhost:3000/api/prices',
+        `${configs.api.host}/api/prices`,
       );
       dispatch({ type: 'FILL_PLANS', payload: data.shared });
     };

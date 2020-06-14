@@ -1,4 +1,4 @@
-module.exports = {
+const configs = {
   api: {
     host: 'http://localhost:3000',
     headers: {
@@ -6,3 +6,5 @@ module.exports = {
     },
   },
 };
+
+export default configs;
