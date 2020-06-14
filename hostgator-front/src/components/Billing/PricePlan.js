@@ -6,9 +6,20 @@ import formatter from '../../utils/strings';
 
 import infoIcon from '../../../images/info.svg';
 
+/**
+ * PrincePlan component
+ * @param Array cycles - cycles array
+ * @param ReduxState type - cycle type
+ */
 function PrincePlan({ cycles, type }) {
+  // get active cycle by props
   const activeCycle = type.activeCycle || type;
+  // filter active cycle by type
   const cycle = cycles.filter((o) => o.type === activeCycle)[0];
+
+  /**
+   * functions to make calculos
+   */
   const discount = calc.calcDiscount(cycle.priceOrder);
   const priceInstallments = calc.calcCycleInstallments(discount, cycle.months);
   const priceOffer = calc.offer(cycle.priceOrder, discount);

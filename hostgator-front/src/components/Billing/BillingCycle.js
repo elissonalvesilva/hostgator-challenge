@@ -7,11 +7,17 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 
+// Billing Cycle Component
 function BillingCycle() {
+  // use selector to get a state from redux
   const cycles = useSelector((state) => state.cycles);
   const dispatch = useDispatch();
   const [value, setValue] = useState(cycles);
 
+  /**
+   * Change cycle type and dispatch a action in redux
+   * @param Event event - evento from click
+   */
   const handleChange = (event) => {
     dispatch({ type: 'SET_CYCLE', payload: event.target.value });
     setValue(event.target.value);

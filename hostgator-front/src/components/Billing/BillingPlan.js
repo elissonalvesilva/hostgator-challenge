@@ -45,6 +45,7 @@ function BillingPlan({ values }) {
   );
 }
 
+// default Proptypes
 BillingPlan.defaultProps = {
   values: PropTypes.shape({
     id: PropTypes.number.isRequired,
@@ -53,6 +54,7 @@ BillingPlan.defaultProps = {
   }),
 };
 
+// Proptypes schema
 BillingPlan.propTypes = {
   values: PropTypes.shape({
     id: PropTypes.number.isRequired,

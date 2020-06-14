@@ -9,6 +9,7 @@ import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import cabinetTable from '../../../images/Grupo_29995.svg';
 import personAndTable from '../../../images/Grupo_29996.svg';
 
+// make styles using material-ui styles
 const useStyles = makeStyles(() => ({
   root: {
     flexGrow: 1,
@@ -21,9 +22,13 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
+// Banner Component
 function Banner() {
   const classes = useStyles();
 
+  /**
+   * Scroll animation to billing section
+   */
   function scrollToBilling() {
     document
       .getElementById('billing')
