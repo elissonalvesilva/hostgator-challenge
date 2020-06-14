@@ -1,0 +1,73 @@
+.billing-plan__details {
+  color: $black;
+  font-weight: 400;
+  padding: 15px 26px;
+  text-align: left;
+
+  p:first-child {
+    &::after {
+      border-bottom: 1px dashed $blue-500;
+      content: '';
+      left: 587px;
+      position: absolute;
+      top: 1048px;
+      width: 120px;
+    }
+  }
+
+  p:nth-child(2) {
+    &::after {
+      border-bottom: 1px dashed $blue-500;
+      content: '';
+      left: 587px;
+      position: absolute;
+      top: 1118px;
+      width: 223px
+    }
+  }
+}
+
+/* 
+  ##Device = Tablets, Ipads (portrait)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .billing-plan__details {
+  
+    p:first-child {
+      &::after {
+        left: 380px;
+      }
+    }
+  
+    p:nth-child(2) {
+      &::after {
+        left: 380px;
+      }
+    }
+  }
+  
+}
+
+/* 
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .billing-plan__details {
+  
+    p:first-child {
+      &::after {
+        left: 37px;
+      }
+    }
+  
+    p:nth-child(2) {
+      &::after {
+        left: 37px;
+      }
+    }
+  }
+}

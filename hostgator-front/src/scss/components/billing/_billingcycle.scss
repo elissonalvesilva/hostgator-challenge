@@ -1,0 +1,72 @@
+.billing__cycle {
+  legend {
+    color: $blue-800;
+  }
+
+  .cycle__choose {
+    background-color: $white;
+    border-radius: 50px;
+    border: 1px solid $primary;
+    box-shadow: 0px 2px 4px #4480C570;
+    flex-direction: row;
+    margin-top: 8px;
+
+    .MuiFormControlLabel-root {
+      margin-left: 0;
+    }
+
+    .MuiIconButton-label {
+      color: $blue-400;
+    }
+
+    .MuiFormControlLabel-label {
+      color: $primary;
+    }
+
+    .cycle__choose--active {
+      background-color: $primary;
+      border-radius: 50px;
+      color: $white;
+      margin-left: 0;
+      margin-right: 0;
+      
+      .MuiIconButton-label {
+        color: $white;
+      }
+
+      .MuiFormControlLabel-label {
+        color: $white;
+        padding-right: 12px;
+        
+      }
+    }
+
+  }
+}
+
+/* 
+  ##Device = Tablets, Ipads (portrait)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  
+  
+}
+
+/* 
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .billing__cycle {
+
+    .cycle__choose {
+      flex-wrap: nowrap;
+      .MuiFormControlLabel-root{
+        margin-left: -3px;
+      }
+    }
+  }
+}

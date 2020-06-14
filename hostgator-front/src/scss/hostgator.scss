@@ -1,8 +1,9 @@
 @import "variables";
 @import "normalizer";
+@import "animations";
 
 * {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Montserrat', sans-serif !important;
 }
 
 body {
@@ -11,5 +12,19 @@ body {
   padding: 0;
 }
 
+.divider {
+  border: 0;
+  background-color: $blue-200;
+  height: 1px;
+}
+
+.hostgator-main {
+  position: relative;
+  width: 100%;
+  display: block;
+  overflow: hidden;
+}
+
 @import 'components/navigation';
-@import 'components/header';
+@import 'components/banner';
+@import 'components/billing/billing';

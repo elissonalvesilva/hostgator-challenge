@@ -1,6 +1,21 @@
 // colors
-$white: #fff;
+$primary: #16437E;
+$secondary: #FF6A17;
 
+$blue-900: #16437E;
+$blue-800: #1D5297;
+$blue-700: #4480C570;
+$blue-600: #4480C5;
+$blue-500: #9EB8DC;
+$blue-400: #9EB8DC;
+$blue-300: #B9D0EF;
+$blue-200: #DFECFF;
+
+$white: #fff;
+$black: #333333;
+$success: #51C99C;
+
+// background
 $background:#F1F6FB;
 
 
@@ -9,6 +24,6 @@ $background-navigation: $white;
 $navigation-height: 52px;
 
 // header
-$background-header: #16437E; 
+$background-header: $primary; 
 $header-height: 380px;
 $header-description-color: $white;

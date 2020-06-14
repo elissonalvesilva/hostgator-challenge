@@ -38,8 +38,11 @@ module.exports = {
           'style-loader',
           // Translates CSS into CommonJS
           'css-loader',
+          // Resolve url on Sass
+          'resolve-url-loader',
           // Compiles Sass to CSS
           'sass-loader',
+
         ],
       },
       {

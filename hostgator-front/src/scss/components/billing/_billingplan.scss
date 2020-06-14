@@ -1,0 +1,46 @@
+.billing-plan {
+  margin: 42px 0 42px;
+
+  .billing-plan__background,
+  .billing-plan__underscore {
+    background-color: $secondary;
+    margin: auto;
+    width: 320px;
+    border-radius: 4px;
+    padding: 10px 0 5px 0;
+  }
+
+  .billing-plan__card {
+    .billing-card__header {
+      padding: 28px 0 0 0;
+
+      h2 {
+        color: $primary;
+      }
+    }
+  }
+}
+
+/* 
+  ##Device = Tablets, Ipads (portrait)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  
+  
+}
+
+/* 
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .billing-plan {
+    .billing-plan__background,
+    .billing-plan__underscore {
+      width: 300px;
+    }
+  }
+}

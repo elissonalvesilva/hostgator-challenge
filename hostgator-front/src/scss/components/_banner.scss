@@ -1,0 +1,202 @@
+.banner {
+  height: $header-height;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #0d64ab;
+    background-repeat: repeat;
+    background-position: left top;
+    z-index: -3;
+  }
+  &::after {
+    -ms-transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    background-color: $background;
+    background-image: url("../../../images/wave.svg");
+    background-position: right bottom;
+    background-repeat: no-repeat;
+    bottom: 0;
+    content: '';
+    height: 32px;
+    left: 0;
+    margin-left: 50%;
+    position: absolute;
+    transform: translateX(-50%);
+    width: 2995px;
+    z-index: -3;
+  }
+  .banner__content {
+    
+    .banner__section {
+      padding: 80px 10px 0 10px;
+      .banner__cabinet--image,
+      .banner__person--image {
+        width: 90%;
+      }
+      .banner__description {
+        color: $header-description-color;
+      }
+  
+      .description__offers,
+      .description__title,
+      .description__text {
+        text-align: center;
+        width: 100%;
+      }
+  
+      .description__title  {
+        color: #B9D0EF;
+        letter-spacing: 1.6px;
+        margin: 0 0 40px 0;
+      }
+
+      .description__text {
+        font-weight: 600;
+        letter-spacing: 0px;
+        margin-bottom: 50px;
+
+      }
+
+      .description__offers {
+        color: #B9D0EF;
+
+        h6:first-child {
+          display: block;
+          margin-bottom: 0;
+        }
+
+        h6 {
+          font-weight: 400;
+          display: inline;
+
+          .MuiSvgIcon-root {
+            font-size: 20px;
+            margin: 0 3px 0 8px;
+          }
+          span {
+            position: relative;
+            top: -6px;
+          }
+        }
+      }
+    }
+
+    .banner__arrow {
+      width: 100%;
+      display: block;
+      text-align: center;
+      position: relative;
+      top: -55px;
+      .arrow__down {
+        background-color: #4480C5;
+        border-radius: 50%;
+        color: $white;
+        cursor: pointer;
+        height: 32px;
+        margin: auto;
+        width: 32px;
+        -webkit-animation: bounce-top 2s infinite;
+	        animation: bounce-top 2s infinite;
+
+        .arrow__icon {
+          font-size: 28px;
+          position: relative;
+          top: 3px;
+        }
+      }
+    }
+  }
+}
+
+/* 
+  ##Device = Tablets, Ipads (portrait)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .banner {
+    .banner__content {
+      .banner__section {
+        padding: 80px 10px 0 10px;
+
+        .banner__section--images,
+        .banner__cabinet--image,
+        .banner__person--image {
+          display: none ;
+        }
+
+        .banner__description {
+          .description__title {
+            font-size: 16px;
+          }
+
+          .description__text {
+            font-size: 24px;
+          }
+
+          .description__offers {
+            h6 {
+              font-size: 16px;
+              margin: 10px 0;
+            }
+          }
+        }        
+      }
+      .banner__arrow {
+        top: calc(380px - 290px);
+      }
+    }
+  }
+  
+}
+
+/* 
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .banner {
+    .banner__content {
+      .banner__section {
+        padding: 40px 20px 0 20px;
+
+        .banner__section--images,
+        .banner__cabinet--image,
+        .banner__person--image {
+          display: none ;
+        }
+
+        .banner__description {
+          .description__title {
+            font-size: 16px;
+            margin-bottom: 0px;
+
+          }
+
+          .description__text {
+            font-size: 24px;
+            margin-bottom: 20px;
+          }
+
+          .description__offers {
+            h6 {
+              display: block;
+              font-size: 16px;
+              margin: 10px 0;
+            }
+          }
+        }
+      }
+      .banner__arrow {
+        top: 25px;
+      }
+    }
+  }
+}

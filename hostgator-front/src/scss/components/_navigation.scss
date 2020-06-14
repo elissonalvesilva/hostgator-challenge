@@ -12,3 +12,35 @@
     }
   }
 }
+
+/* 
+  ##Device = Tablets, Ipads (portrait)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  
+  .nav {
+    .nav__content {
+      .nav__logo {
+        left: 27px;
+      }
+    }
+  }
+  
+}
+
+/* 
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .nav {
+    .nav__content {
+      .nav__logo {
+        left: 5px;
+      }
+    }
+  }
+}
