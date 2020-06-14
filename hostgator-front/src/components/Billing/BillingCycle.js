@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
@@ -7,9 +8,12 @@ import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 
 function BillingCycle() {
-  const [value, setValue] = React.useState('triennially');
+  const cycles = useSelector((state) => state.cycles);
+  const dispatch = useDispatch();
+  const [value, setValue] = useState(cycles);
 
   const handleChange = (event) => {
+    dispatch({ type: 'SET_CYCLE', payload: event.target.value });
     setValue(event.target.value);
   };
 

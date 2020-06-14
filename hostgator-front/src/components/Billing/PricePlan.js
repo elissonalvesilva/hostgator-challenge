@@ -7,7 +7,8 @@ import formatter from '../../utils/strings';
 import infoIcon from '../../../images/info.svg';
 
 function PrincePlan({ cycles, type }) {
-  const cycle = cycles.filter((o) => o.type === type)[0];
+  const activeCycle = type.activeCycle || type;
+  const cycle = cycles.filter((o) => o.type === activeCycle)[0];
   const discount = calc.calcDiscount(cycle.priceOrder);
   const priceInstallments = calc.calcCycleInstallments(discount, cycle.months);
   const priceOffer = calc.offer(cycle.priceOrder, discount);
@@ -63,7 +64,7 @@ PrincePlan.defaultProps = {
       months: PropTypes.number.isRequired,
     }),
   ),
-  type: PropTypes.string,
+  type: PropTypes.any,
 };
 
 PrincePlan.propTypes = {
@@ -75,7 +76,8 @@ PrincePlan.propTypes = {
       months: PropTypes.number.isRequired,
     }),
   ),
-  type: PropTypes.string,
+  // eslint-disable-next-line react/forbid-prop-types
+  type: PropTypes.any,
 };
 
 export default PrincePlan;

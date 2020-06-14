@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-
 import {
   Card,
 } from '@material-ui/core';
+import { useSelector, useDispatch } from 'react-redux';
 
 import PrincePlan from './PricePlan';
 import DetailsPlan from './DetailsPlan';
@@ -13,8 +13,19 @@ import planIcon from '../../../images/Grupo_29910.svg';
 function BillingPlan({ values }) {
   const {
     name,
-    cycles,
+    cycles: allCycles,
   } = values;
+
+  const cycles = useSelector((state) => state.cycles);
+  const dispatch = useDispatch();
+
+  function getCycle() {
+    dispatch({ type: 'GET_CYCLE' });
+  }
+
+  useEffect(() => {
+    getCycle();
+  });
 
   return (
     <div className="billing-plan">
@@ -25,7 +36,7 @@ function BillingPlan({ values }) {
             <h2>{ name }</h2>
           </div>
           <hr className="divider" />
-          <PrincePlan cycles={cycles} type="annually" />
+          <PrincePlan cycles={allCycles} type={cycles} />
           <hr className="divider" />
           <DetailsPlan />
         </Card>
@@ -38,14 +49,7 @@ BillingPlan.defaultProps = {
   values: PropTypes.shape({
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
-    cycles: PropTypes.arrayOf(
-      PropTypes.shape({
-        type: PropTypes.string.isRequired,
-        priceRenew: PropTypes.string.isRequired,
-        priceOrder: PropTypes.string.isRequired,
-        months: PropTypes.number.isRequired,
-      }),
-    ),
+    cycles: PropTypes.array,
   }),
 };
 
@@ -53,14 +57,7 @@ BillingPlan.propTypes = {
   values: PropTypes.shape({
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
-    cycles: PropTypes.arrayOf(
-      PropTypes.shape({
-        type: PropTypes.string.isRequired,
-        priceRenew: PropTypes.string.isRequired,
-        priceOrder: PropTypes.string.isRequired,
-        months: PropTypes.number.isRequired,
-      }),
-    ),
+    cycles: PropTypes.array,
   }),
 };
 

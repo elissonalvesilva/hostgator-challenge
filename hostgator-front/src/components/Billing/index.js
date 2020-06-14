@@ -1,26 +1,21 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 
 import BillingCycle from './BillingCycle';
 import BillingPlan from './BillingPlan';
 
-// import {
-//   calcDiscount,
-//   calcCycleInstallments,
-//   offer,
-// } from '../../helpers/baseCalc';
-
 function Billing() {
-  const [plans, setPlans] = useState([]);
+  const { plans } = useSelector((state) => state.plans);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchData = async () => {
       const { data } = await axios(
         'http://localhost:3000/api/prices',
       );
-
-      setPlans(data.shared);
+      dispatch({ type: 'FILL_PLANS', payload: data.shared });
     };
 
     fetchData();
