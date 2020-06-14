@@ -8,10 +8,11 @@ CONTAINER_FRONT_NAME := hostgator-front
 build:
 	docker-compose build
 	cd ./hostgator-api && composer install
+	cd hostgator-front/ && yarn
+	cd hostgator-front/ && yarn build
 
 start:
 	docker-compose up
-	up-data
 
 stop:
 	docker-compose down

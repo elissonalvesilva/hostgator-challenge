@@ -6,6 +6,7 @@ services:
     container_name: nginx-container
     ports:
       - "3000:80"
+      - "8000:81"
     volumes:
       - ./:/var/www/html
       - ./docker/nginx/conf.d:/etc/nginx/conf.d
@@ -49,3 +50,20 @@ services:
       test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
       timeout: 20s
       retries: 10
+
+  frontend:
+    build: ./docker/frontend
+    container_name: hostgator-frontend
+    volumes: 
+      - .:/var/www/html
+    expose: 
+      - 4513
+    ports: 
+      - 4513:4513
+    command: bash -c "/var/www/html/scripts/run-front-docker.sh"
+    healthcheck:
+      test: ["CMD", "curl", "http://localhost:9000/ping"]
+      timeout: 20s
+      retries: 10
+    depends_on:
+      - php-fpm
