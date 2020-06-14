@@ -4,9 +4,13 @@ use DI\Container;
 use Dotenv\Dotenv;
 use Slim\Factory\AppFactory;
 use Dotenv\Exception\InvalidPathException;
-use Psr\Http\Message\ServerRequestInterface;
 
 use App\Handlers\HttpErrorHandler;
+use App\Middlewares\CorsMiddleware;
+use Psr\Http\Server\RequestHandlerInterface;
+use Slim\Psr7\Request;
+use Slim\Psr7\Response;
+use Slim\Routing\RouteContext;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
@@ -56,7 +60,14 @@ $container->set('settings', function () {
 $errorMiddleware = $app->addErrorMiddleware($displayErrorDetails, false, false);
 $errorMiddleware->setDefaultErrorHandler($errorHandler);
 
+
 require_once __DIR__ . '/../bootstrap/database.php';
 require_once __DIR__ . '/../routes/web.php';
+
+$app->add(CorsMiddleware::class);
+
+// The RoutingMiddleware should be added after our CORS middleware 
+// so routing is performed first
+$app->addRoutingMiddleware();
 
 return $app;
