@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import calc from '../../helpers/baseCalc';
+import formatter from '../../utils/strings';
 
 import infoIcon from '../../../images/info.svg';
 
@@ -17,17 +18,17 @@ function PrincePlan({ cycles, type }) {
         <div className="section-price__total">
           <del>
             R$
-            { cycle.priceOrder }
+            { formatter.currency(cycle.priceOrder) }
           </del>
           <span className="price-total">
             R$
-            { discount }
+            { formatter.currency(discount) }
           </span>
           <span className="price-text">equivalente a</span>
           <div className="price-per-month">
             R$
             <span className="price-per-month__price">
-              {priceInstallments}
+              { formatter.currency(priceInstallments) }
             </span>
             /mês*
           </div>
@@ -43,7 +44,7 @@ function PrincePlan({ cycles, type }) {
           <div className="description-discount">
             <span>economize R$</span>
             <span className="description-discount__price">
-              {priceOffer}
+              { formatter.currency(priceOffer) }
             </span>
             <span className="description-discount__percent">40% OFF</span>
           </div>

@@ -56,9 +56,14 @@
 
       .description-discount{
         margin-top: 13px;
+
         span {
           color: $blue-800;
           margin-right: 5px;
+        }
+
+        span:first-child {
+          margin-right: 0;
         }
 
         .description-discount__percent {
