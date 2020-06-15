@@ -56,3 +56,14 @@ Must be installed docker and docker-compose
   - Product by id
 > http://localhost:3000/api/products/{id}
 
+### Test
+ - Firs you must start the application using _make start_ after it you can run the test using the command below
+> make test
+
+## How to use a Frontend Page
+ - The server is running in port _4513_
+> http://localhost:4513
+
+## Observation
+ - You must to follow the all steps to running the application a test
+

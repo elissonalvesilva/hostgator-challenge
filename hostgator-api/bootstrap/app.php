@@ -31,12 +31,6 @@ $app = AppFactory::create();
 $callableResolver = $app->getCallableResolver();
 $responseFactory = $app->getResponseFactory();
 
-//create error handler
-$errorHandler = new HttpErrorHandler($callableResolver, $responseFactory);
-
-// Add Routing Middleware
-$app->addRoutingMiddleware();
-
 /**
  * Add settings in container
  */
@@ -57,6 +51,7 @@ $container->set('settings', function () {
 });
 
 // Add Error Handling Middleware
+$errorHandler = new HttpErrorHandler($callableResolver, $responseFactory);
 $errorMiddleware = $app->addErrorMiddleware($displayErrorDetails, false, false);
 $errorMiddleware->setDefaultErrorHandler($errorHandler);
 
