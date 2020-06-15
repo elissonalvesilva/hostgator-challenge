@@ -67,3 +67,5 @@ Must be installed docker and docker-compose
 ## Observation
  - You must to follow the all steps to running the application a test
 
+## Architecture
+![Arquitetura](https://github.com/ElissonAlvesSilva/hostgator-challenge/blob/master/arquitetura.jpg?raw=true)
