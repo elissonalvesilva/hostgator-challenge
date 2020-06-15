@@ -12,6 +12,7 @@ import planIcon from '../../../images/Grupo_29910.svg';
 
 function BillingPlan({ values }) {
   const {
+    id,
     name,
     cycles: allCycles,
   } = values;
@@ -36,7 +37,7 @@ function BillingPlan({ values }) {
             <h2>{ name }</h2>
           </div>
           <hr className="divider" />
-          <PrincePlan cycles={allCycles} type={cycles} />
+          <PrincePlan cycles={allCycles} pid={id} type={cycles} />
           <hr className="divider" />
           <DetailsPlan />
         </Card>
