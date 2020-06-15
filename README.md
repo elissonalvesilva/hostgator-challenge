@@ -66,6 +66,7 @@ Must be installed docker and docker-compose
 
 ## Observation
  - You must to follow the all steps to running the application a test
+ - You must to run _make up-date_ to populate a database and show all data on frontend page
 
 ## Architecture
 ![Arquitetura](https://github.com/ElissonAlvesSilva/hostgator-challenge/blob/master/arquitetura.png)
